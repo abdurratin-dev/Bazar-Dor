@@ -28,7 +28,7 @@ export default async function Marquee() {
   return (
     <div className="sticky top-0 z-50 border-y border-gray-200 bg-gray-200/90 shadow-sm backdrop-blur-md py-1">
       <MarqueeText
-        duration={20}
+        duration={15}
         direction="right"
         className="flex h-full items-center"
       >
@@ -56,7 +56,7 @@ export default async function Marquee() {
           return (
             <Link
               key={product.id}
-              href={`/products/${product.id}`}
+              href={`/productsDetails/${product.id}`}
               className="
                 group mx-1.5 flex h-9 items-center gap-2
                 whitespace-nowrap rounded-full px-3

@@ -1,7 +1,5 @@
 import { getProductsData } from "@/lib/allDataFetch";
 import { IProductDataType } from "@/types/allDataType";
-import Link from "next/link";
-import { FaAnglesDown } from "react-icons/fa6";
 import ProductCard from "../cards/ProductCard";
 
 export default async function AllProducts() {
@@ -12,7 +10,7 @@ export default async function AllProducts() {
             <p className="text-gray-500">মোট {products.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
             <div className="grid sm:grid-cols-2 gap-5 mt-4 md:grid-cols-3 lg:grid-cols-4">
                 {
-                    products.map((product: IProductDataType) => <Link key={product.id} href={`/products/${product.id}`}><ProductCard product={product} /></Link>)
+                    products.map((product: IProductDataType) => <ProductCard key={product.id} product={product} />)
                 }
             </div>
         </div>

@@ -33,3 +33,19 @@ export interface IMarketsDataType {
   min: number
   max: number
 }
+
+export interface IUnitBangla {
+  kg: string;
+  g?: string;
+  litre?: string;
+  ml?: string;
+  dozen?: string;
+  piece?: string;
+}
+
+export interface ISignUpDataType {
+  name?: string
+  email: string
+  password: string
+  confirmPassword?: string
+}
