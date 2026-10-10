@@ -8,11 +8,12 @@ interface ProductsDetailsPageProps{
     }>
 }
 
-export default function ProductsDetailsPage({params}:ProductsDetailsPageProps) {
+export default async function ProductsDetailsPage({params}:ProductsDetailsPageProps) {
+    const {productsId} = await params
     
     return (
         <Suspense fallback={<ProductDetailsSkeleton />}>
-            <ProductDetails params={params} />
+            <ProductDetails productsId={productsId} />
         </Suspense>
     )
 }

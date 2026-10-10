@@ -8,11 +8,10 @@ import MarketsPrice from "./MarketsPrice";
 import NotFound from "../not-found/NotFound";
 
 export default async function ProductDetails({
-  params,
+  productsId,
 }: {
-  params: { productsId: string };
+  productsId: string ;
 }) {
-  const { productsId } = await params;
   const products: IProductDataType[] = await getProductsData();
   const product = products.find((item) => item.id === Number(productsId));
   if(product?.id !== Number(productsId)){

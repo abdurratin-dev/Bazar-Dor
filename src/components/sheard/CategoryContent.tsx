@@ -6,24 +6,22 @@ import { useEffect, useState } from "react";
 import NotFound from "../not-found/NotFound";
 
 export default function CategoryContent({
-  params,
+  categoryId,
 }: {
-  params: { categoryId: string };
+  categoryId : string ;
 }) {
-  const [categoryId, setCategoryId] = useState("");
   const [products, setPoducts] = useState<IProductDataType[]>([]);
   const [categories, setCategories] = useState<ICategoryDataType[]>([]);
   useEffect(() => {
     const contorldata = async() => {
-    const { categoryId } =await params;
     const products: IProductDataType[] = await getProductsData();
     const categories: ICategoryDataType[] = await getCategoryData();
-    setCategoryId(categoryId)
     setPoducts(products);
     setCategories(categories)
     }
     contorldata();
   }, []);
+  console.log(categoryId)
   const categoryProducts = products.filter(
       (product) => product.category === categoryId,
     );
