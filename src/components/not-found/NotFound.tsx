@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@heroui/react";
 
-export default function NotFound() {
+export default function Notfound() {
   const router = useRouter();
 
   return (
