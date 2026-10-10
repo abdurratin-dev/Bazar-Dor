@@ -3,7 +3,7 @@ import { getCategoryData, getProductsData } from "@/lib/allDataFetch";
 import { ICategoryDataType, IProductDataType } from "@/types/allDataType";
 import  ProductsCategorys  from "./ProductsCategorys";
 import { useEffect, useState } from "react";
-import NotFound from "../not-found/NotFound";
+import CategoryProductsSkeleton from "../skeleton/CategoryProductsSkeleton";
 
 export default function CategoryContent({
   categoryId,
@@ -28,7 +28,7 @@ export default function CategoryContent({
   const head = categories.find((product) => product.id === categoryId);
   if(head?.id === categoryId){
     return (
-      <div className="mt-8 h-screen">
+      <div className="mt-8 mb-8 xl:h-screen">
       <div className="flex items-center gap-5">
         <div
           className="
@@ -56,6 +56,6 @@ export default function CategoryContent({
     )
   }
   return (
-    <NotFound />
+    <CategoryProductsSkeleton />
   );
 }

@@ -20,6 +20,7 @@ import { BsEyeSlash } from "react-icons/bs";
 
 export default function SignInPage() {
   const [isConVisible, setIsConVisible] = useState(false);
+  const {data: session} = authClient.useSession();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -27,6 +28,10 @@ export default function SignInPage() {
       email: String(formData.get("email")),
       password: String(formData.get("password")),
     };
+    if(session?.user){
+      toast.error("আপনার এই ইমেল দিয়ে আপনি একটি একাউন্ট তৈরি করেছেন । তাই এখন নতুন ইমেইল ব্যবহার করুন")
+      return
+    }
     const { data, error } = await authClient.signIn.email({
       email: resData.email,
       password: resData.password,
