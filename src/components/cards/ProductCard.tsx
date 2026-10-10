@@ -110,7 +110,7 @@ export default function ProductCard({
             `}
           >
             {arrowIcon}
-            <span>{priceParcentege.toFixed(2)}%</span>
+            <span>{Number(priceParcentege.toFixed(1)).toLocaleString("bn-BD")}%</span>
           </div>
         </div>
 

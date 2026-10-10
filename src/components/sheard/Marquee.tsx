@@ -106,7 +106,7 @@ export default async function Marquee() {
                 `}
               >
                 {arrowIcon}
-                {Math.abs(pricePercentage).toFixed(2)}%
+                {Number((pricePercentage).toFixed(1)).toLocaleString("bn-BD")}%
               </span>
             </Link>
           );

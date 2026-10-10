@@ -34,15 +34,15 @@ export default function MarketsPrice({
                   বিভাগ
                 </th>
 
-                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-emerald-700 sm:px-4 sm:py-4 sm:text-sm">
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-emerald-700 sm:px-4 sm:py-4 sm:text-sm text-end">
                   সর্বনিম্ন
                 </th>
 
-                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-rose-700 sm:px-4 sm:py-4 sm:text-sm">
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-rose-700 sm:px-4 sm:py-4 sm:text-sm text-end">
                   সর্বাধিক
                 </th>
 
-                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-indigo-700 sm:px-4 sm:py-4 sm:text-sm">
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-indigo-700 sm:px-4 sm:py-4 sm:text-sm text-end">
                   গড় দাম
                 </th>
               </tr>
@@ -72,21 +72,21 @@ export default function MarketsPrice({
                     </td>
 
                     {/* Minimum Price */}
-                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4 text-end">
                       <span className="inline-flex rounded-md bg-emerald-50 px-2 py-1.5 text-xs font-bold text-emerald-700 sm:rounded-lg sm:px-3 sm:text-sm">
                         {item.min.toLocaleString("bn-BD")}
                       </span>
                     </td>
 
                     {/* Maximum Price */}
-                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4 text-end">
                       <span className="inline-flex rounded-md bg-rose-50 px-2 py-1.5 text-xs font-bold text-rose-700 sm:rounded-lg sm:px-3 sm:text-sm">
                         {item.max.toLocaleString("bn-BD")}
                       </span>
                     </td>
 
                     {/* Average Price */}
-                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4 text-end">
                       <span className="inline-flex rounded-md bg-indigo-50 px-2 py-1.5 text-xs font-bold text-indigo-700 sm:rounded-lg sm:px-3 sm:text-sm">
                         {averagePrice.toLocaleString("bn-BD", {
                           maximumFractionDigits: 2,

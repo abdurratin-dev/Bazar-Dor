@@ -100,9 +100,9 @@ export default function Hero() {
           বিস্তারিত, গড়, সর্বনিম্ন- সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
         </p>
 
-        <Button className="w-full rounded-lg bg-[#05893E] font-semibold text-white sm:w-fit sm:px-8">
+        <a href="#allProducts" className="w-full rounded-lg bg-[#05893E] font-semibold text-white sm:w-fit sm:px-8 py-2 text-center">
           সব পণ্য
-        </Button>
+        </a>
       </div>
 
       {/* Right Content */}

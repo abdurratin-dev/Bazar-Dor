@@ -49,13 +49,16 @@ export default function Navbar() {
         <Dropdown.Popover>
           <Dropdown.Menu onAction={(key) => console.log(`Selected: ${key}`)}>
             <Dropdown.Item>
-            <Link href="/profile" className="w-full">
+            <Link href="/profile" onClick={()=>{
+              setIsMenuOpen(false)
+            }} className="w-full">
               <Label>View Profile</Label>
             </Link>
             </Dropdown.Item>
             <Dropdown.Item
               variant="danger"
               onClick={() => {
+                setIsMenuOpen(false)
                 authClient.signOut()
                 redirect('/')
               }}
@@ -102,7 +105,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden items-center gap-3 sm:flex">{user}</div>
+          <div className="hidden items-center gap-3 lg:flex">{user}</div>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -169,7 +172,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Auth Buttons */}
-            <div className="flex gap-3 border-t border-gray-100 pt-3 sm:hidden">
+            <div className="flex gap-3 border-t border-gray-100 pt-3 lg:hidden">
               {user}
             </div>
           </div>

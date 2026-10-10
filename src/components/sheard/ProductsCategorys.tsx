@@ -35,8 +35,8 @@ export default function ProductsCategorys({
 
   const options: { value: SortOption; label: string }[] = [
     { value: "default", label: "ডিফল্ট" },
-    { value: "min", label: "দাম কম থেকে বেশি" },
-    { value: "max", label: "দাম বেশি থেকে কম" },
+    { value: "min", label: "দাম: কম থেকে বেশি" },
+    { value: "max", label: "দাম: বেশি থেকে কম" },
   ];
 
   const selectedLabel =

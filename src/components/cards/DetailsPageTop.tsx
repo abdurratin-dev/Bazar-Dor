@@ -111,7 +111,7 @@ export default function DetailsPageTop({
               }`}
             >
               <span>{arrowIcon}</span>
-              <span>{Math.abs(priceParcentege).toFixed(2)}%</span>
+              <span>{Number((priceParcentege).toFixed(1)).toLocaleString("bn-BD")}%</span>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { ICategoryDataType, IProductDataType } from "@/types/allDataType";
 import  ProductsCategorys  from "./ProductsCategorys";
 import { useEffect, useState } from "react";
 import CategoryProductsSkeleton from "../skeleton/CategoryProductsSkeleton";
+import NotFound from "../not-found/NotFound";
 
 export default function CategoryContent({
   categoryId,
@@ -26,9 +27,16 @@ export default function CategoryContent({
       (product) => product.category === categoryId,
     );
   const head = categories.find((product) => product.id === categoryId);
-  if(head?.id === categoryId){
+  if(head?.id !== categoryId){
     return (
-      <div className="mt-8 mb-8 xl:h-screen">
+      <CategoryProductsSkeleton />
+    )
+  }
+  if(categoryProducts.length === 0){
+    return <NotFound />
+  }
+  return (
+    <div className="mt-8 mb-8 xl:h-screen">
       <div className="flex items-center gap-5">
         <div
           className="
@@ -53,9 +61,5 @@ export default function CategoryContent({
       </div>
       <ProductsCategorys categoryProducts={categoryProducts} />
     </div>
-    )
-  }
-  return (
-    <CategoryProductsSkeleton />
   );
 }
