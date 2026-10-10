@@ -44,7 +44,7 @@ export default function MarketsPrice({
             </thead>
 
             <tbody className="divide-y divide-gray-100">
-              {product.markets.map((item, ind) => {
+              {product?.markets?.map((item, ind) => {
                 const averagePrice = (item.max + item.min) / 2;
                 
                 return (
@@ -92,7 +92,7 @@ export default function MarketsPrice({
                 );
               })}
 
-              {product.markets.length === 0 && (
+              {product?.markets?.length === 0 && (
                 <tr>
                   <td
                     colSpan={5}

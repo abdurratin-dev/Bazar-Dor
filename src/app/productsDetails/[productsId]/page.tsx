@@ -1,11 +1,12 @@
+'use client'
 import ProductDetails from "@/components/sheard/ProductDetails";
-import { CloudCog } from "lucide-react";
-import Link from "next/link";
+import ProductDetailsSkeleton from "@/components/skeleton/ProductDetailsSkeleton";
 import { Suspense } from "react";
 
-export default async function ProductsDetailsPage({params}:{params: Promise<{productId: string}>}) {
+export default function ProductsDetailsPage({params}:{params: Promise<{productId: string}>}) {
+    
     return (
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<ProductDetailsSkeleton />}>
             <ProductDetails params={params} />
         </Suspense>
     )

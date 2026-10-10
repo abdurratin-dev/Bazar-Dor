@@ -5,6 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import DetailsPageTop from "../cards/DetailsPageTop";
 import PriceSummury from "./PriceSummury";
 import MarketsPrice from "./MarketsPrice";
+import NotFound from "../not-found/NotFound";
 
 export default async function ProductDetails({
   params,
@@ -14,6 +15,9 @@ export default async function ProductDetails({
   const { productsId } = await params;
   const products: IProductDataType[] = await getProductsData();
   const product = products.find((item) => item.id === Number(productsId));
+  if(product?.id !== Number(productsId)){
+    return <NotFound />
+  }
   return (
     <div className="grid gap-5 my-5">
       <div className="flex items-center gap-3">

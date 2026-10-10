@@ -5,14 +5,14 @@ export default function PriceSummury({
 }: {
   product: IProductDataType;
 }) {
-  let min = product.markets[0].min;
+  let min = product?.markets[0]?.min;
   let max = 0;
-  for (let i = 0; i < product.markets.length; i++) {
-    if (product.markets[i].min < min) {
-      min = product.markets[i].min;
+  for (let i = 0; i < product?.markets?.length; i++) {
+    if (product?.markets[i]?.min < min) {
+      min = product?.markets[i]?.min;
     }
-    if (product.markets[i].max > max) {
-      max = product.markets[i].max;
+    if (product?.markets[i]?.max > max) {
+      max = product?.markets[i]?.max;
     }
   }
   const avaregePrice = (max + min) / 2;
@@ -48,7 +48,7 @@ export default function PriceSummury({
 
             <div>
               <p className="text-2xl font-black tracking-tight text-emerald-600 sm:text-3xl">
-                {min.toLocaleString("bn-BD")}
+                {min?.toLocaleString("bn-BD")}
                 <span className="ml-1 text-sm font-semibold">টাকা</span>
               </p>
               <p className="mt-2 text-xs leading-relaxed text-gray-500 sm:text-sm">
@@ -76,7 +76,7 @@ export default function PriceSummury({
 
             <div>
               <p className="text-2xl font-black tracking-tight text-rose-600 sm:text-3xl">
-                {max.toLocaleString("bn-BD")}
+                {max?.toLocaleString("bn-BD")}
                 <span className="ml-1 text-sm font-semibold">টাকা</span>
               </p>
               <p className="mt-2 text-xs leading-relaxed text-gray-500 sm:text-sm">
@@ -102,7 +102,7 @@ export default function PriceSummury({
 
             <div>
               <p className="text-2xl font-black tracking-tight text-blue-600 sm:text-3xl">
-                {avaregePrice.toLocaleString("bn-BD")}
+                {avaregePrice?.toLocaleString("bn-BD")}
                 <span className="ml-1 text-sm font-semibold">টাকা</span>
               </p>
               <p className="mt-2 text-xs leading-relaxed text-gray-500 sm:text-sm">

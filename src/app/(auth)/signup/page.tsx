@@ -6,10 +6,10 @@ import {
   Description,
   FieldError,
   Form,
+  Input,
   InputGroup,
   TextField,
 } from "@heroui/react";
-import { email } from "better-auth";
 import { Eye } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -37,8 +37,18 @@ export default function SignUpPage() {
         email: resData.email,
         password: resData.confirmPassword
     })
-    console.log(data);
+    return toast.success("আপনার অ্যাকাউন্টটি সফলভাবে তৈরি হয়েছে");
   };
+  const signInOnGoogle = async () => {
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+};
+const signInOnGitHub = async () => {
+  const data = await authClient.signIn.social({
+    provider: "github",
+  });
+};
 
   return (
     <div className="flex flex-col items-center my-20">
@@ -46,7 +56,7 @@ export default function SignUpPage() {
       <p className="text-sm text-gray-500 mb-5">
         বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।{" "}
       </p>
-      <div className="flex flex-col items-center justify-center gap-4 bg-gray-100 border border-gray-300 p-5 rounded-2xl">
+      <div className="flex flex-col items-center justify-center gap-4 bg-white border border-gray-300 p-5 rounded-2xl">
         <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
           <TextField
             isRequired
@@ -59,10 +69,8 @@ export default function SignUpPage() {
             }}
           >
             <p className="font-semibold">নাম</p>
-            <InputGroup>
-            <InputGroup.Input>
-            </InputGroup.Input>
-            </InputGroup>
+            <Input className={`min-h-12 w-full rounded-xl border py-3 pr-4 text-sm outline-none transition  border-[#16864a] bg-white focus:ring-4 focus:ring-[#16864a]/10
+              }`} />
             <FieldError />
           </TextField>
 
@@ -78,10 +86,8 @@ export default function SignUpPage() {
             }}
           >
             <p className="font-semibold">ইমেইল</p>
-            <InputGroup>
-            <InputGroup.Input>
-            </InputGroup.Input>
-            </InputGroup>
+            <Input className={`min-h-12 w-full rounded-xl border py-3 pr-4 text-sm outline-none transition  border-[#16864a] bg-white focus:ring-4 focus:ring-[#16864a]/10
+              }`} />
             <FieldError />
           </TextField>
 
@@ -105,7 +111,8 @@ export default function SignUpPage() {
             }}
           >
             <p className="font-semibold">পাসওয়ার্ড</p>
-            <InputGroup>
+            <InputGroup className={`min-h-12 w-full rounded-xl border pr-4 text-sm outline-none transition  border-[#16864a] bg-white focus:ring-4 focus:ring-[#16864a]/10
+              }`}>
               <InputGroup.Input
                 className="w-full"
                 type={isVisible ? "text" : "password"}
@@ -152,7 +159,8 @@ export default function SignUpPage() {
             }}
           >
             <p className="font-semibold">পাসওয়ার্ড নিশ্চিত করুন</p>
-            <InputGroup>
+            <InputGroup className={`min-h-12 w-full rounded-xl border pr-4 text-sm outline-none transition  border-[#16864a] bg-white focus:ring-4 focus:ring-[#16864a]/10
+              }`}>
               <InputGroup.Input
                 className="w-full"
                 type={isConVisible ? "text" : "password"}
@@ -178,7 +186,6 @@ export default function SignUpPage() {
             </Description>
             <FieldError />
           </TextField>
-
           <div className="flex gap-2">
             <Button
               type="submit"
@@ -194,10 +201,10 @@ export default function SignUpPage() {
           <hr />
         </div>
         <div className="flex justify-between w-full gap-2">
-          <Button className="flex-1 rounded-lg bg-[#E2F0E7] font-semibold text-[#05893E] hover:bg-[#d1e8d9]">
+          <Button onClick={signInOnGoogle} className="flex-1 rounded-lg bg-[#E2F0E7] font-semibold text-[#05893E] hover:bg-[#d1e8d9]">
             Google দিয়ে চালিয়ে যান
           </Button>
-          <Button className="flex-1 rounded-lg bg-[#E2F0E7] font-semibold text-[#05893E] hover:bg-[#d1e8d9]">
+          <Button onClick={signInOnGitHub} className="flex-1 rounded-lg bg-[#E2F0E7] font-semibold text-[#05893E] hover:bg-[#d1e8d9]">
             GitHub দিয়ে চালিয়ে যান
           </Button>
         </div>

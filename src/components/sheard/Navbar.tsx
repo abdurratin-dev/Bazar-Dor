@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ICategoryDataType } from "@/types/allDataType";
 import Link from "next/link";
 import { getCategoryData } from "@/lib/allDataFetch";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
@@ -55,7 +55,10 @@ export default function Navbar() {
             </Dropdown.Item>
             <Dropdown.Item
               variant="danger"
-              onClick={() => authClient.signOut()}
+              onClick={() => {
+                authClient.signOut()
+                redirect('/')
+              }}
             >
               <Label>Sign Out</Label>
             </Dropdown.Item>
