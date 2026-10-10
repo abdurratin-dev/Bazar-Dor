@@ -1,9 +1,9 @@
 'use client'
 import { getCategoryData, getProductsData } from "@/lib/allDataFetch";
 import { ICategoryDataType, IProductDataType } from "@/types/allDataType";
-import NotFound from "../not-found/NotFound";
-import { ProductsCategorys } from "./ProductsCategorys";
+import  ProductsCategorys  from "./ProductsCategorys";
 import { useEffect, useState } from "react";
+import NotFound from "../not-found/NotFound";
 
 export default function CategoryContent({
   params,
@@ -28,11 +28,9 @@ export default function CategoryContent({
       (product) => product.category === categoryId,
     );
   const head = categories.find((product) => product.id === categoryId);
-  if (head?.id !== categoryId) {
-    return <NotFound />;
-  }
-  return (
-    <div className="mt-8 h-screen">
+  if(head?.id === categoryId){
+    return (
+      <div className="mt-8 h-screen">
       <div className="flex items-center gap-5">
         <div
           className="
@@ -57,5 +55,9 @@ export default function CategoryContent({
       </div>
       <ProductsCategorys categoryProducts={categoryProducts} />
     </div>
+    )
+  }
+  return (
+    <NotFound />
   );
 }

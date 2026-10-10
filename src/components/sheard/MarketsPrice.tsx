@@ -6,38 +6,43 @@ export default function MarketsPrice({
   product: IProductDataType;
 }) {
   return (
-    <div className="space-y-4">
+    <div className="w-full min-w-0 space-y-4 sm:space-y-5">
       {/* Section Heading */}
-      <div className="flex items-center gap-3">
-        <div>
-          <h2 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl">
+      <div className="flex min-w-0 items-start gap-3">
+        <div className="min-w-0">
+          <h2 className="text-lg font-extrabold tracking-tight text-gray-900 sm:text-xl md:text-2xl">
             বাজারভিত্তিক আজকের দাম
           </h2>
-          <p className="mt-1 text-sm text-gray-500">
+
+          <p className="mt-1 text-xs leading-5 text-gray-500 sm:text-sm">
             বিভিন্ন বাজারের দামের তুলনা
           </p>
         </div>
       </div>
 
       {/* Responsive Table */}
-      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-left">
+      <div className="w-full min-w-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm sm:rounded-2xl">
+        <div className="w-full overflow-x-auto overscroll-x-contain">
+          <table className="w-full min-w-[620px] border-collapse text-left sm:min-w-[700px] lg:min-w-0">
             <thead>
               <tr className="bg-gray-50">
-                <th className="border-b border-gray-200 px-4 py-4 text-sm font-bold text-gray-600">
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-gray-600 sm:px-4 sm:py-4 sm:text-sm">
                   বাজার
                 </th>
-                <th className="border-b border-gray-200 px-4 py-4 text-sm font-bold text-gray-600">
+
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-gray-600 sm:px-4 sm:py-4 sm:text-sm">
                   বিভাগ
                 </th>
-                <th className="border-b border-gray-200 px-4 py-4 text-sm font-bold text-emerald-700">
+
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-emerald-700 sm:px-4 sm:py-4 sm:text-sm">
                   সর্বনিম্ন
                 </th>
-                <th className="border-b border-gray-200 px-4 py-4 text-sm font-bold text-rose-700">
+
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-rose-700 sm:px-4 sm:py-4 sm:text-sm">
                   সর্বাধিক
                 </th>
-                <th className="border-b border-gray-200 px-4 py-4 text-sm font-bold text-indigo-700">
+
+                <th className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-xs font-bold text-indigo-700 sm:px-4 sm:py-4 sm:text-sm">
                   গড় দাম
                 </th>
               </tr>
@@ -46,43 +51,43 @@ export default function MarketsPrice({
             <tbody className="divide-y divide-gray-100">
               {product?.markets?.map((item, ind) => {
                 const averagePrice = (item.max + item.min) / 2;
-                
+
                 return (
                   <tr
-                    key={ind}
+                    key={`${item.market}-${item.division}-${ind}`}
                     className="transition-colors duration-200 hover:bg-indigo-50/40"
                   >
                     {/* Market */}
-                    <td className="whitespace-nowrap px-4 py-4">
-                      <span className="font-semibold text-gray-900">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                      <span className="text-xs font-semibold text-gray-900 sm:text-sm">
                         {item.market}
                       </span>
                     </td>
 
                     {/* Division */}
-                    <td className="whitespace-nowrap px-4 py-4">
-                      <span className="inline-flex rounded-lg bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600 sm:text-sm">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                      <span className="inline-flex rounded-md bg-gray-100 px-2 py-1 text-[11px] font-medium text-gray-600 sm:rounded-lg sm:px-2.5 sm:text-sm">
                         {item.division}
                       </span>
                     </td>
 
                     {/* Minimum Price */}
-                    <td className="whitespace-nowrap px-4 py-4">
-                      <span className="inline-flex rounded-lg bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-700">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                      <span className="inline-flex rounded-md bg-emerald-50 px-2 py-1.5 text-xs font-bold text-emerald-700 sm:rounded-lg sm:px-3 sm:text-sm">
                         {item.min.toLocaleString("bn-BD")}
                       </span>
                     </td>
 
                     {/* Maximum Price */}
-                    <td className="whitespace-nowrap px-4 py-4">
-                      <span className="inline-flex rounded-lg bg-rose-50 px-3 py-1.5 text-sm font-bold text-rose-700">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                      <span className="inline-flex rounded-md bg-rose-50 px-2 py-1.5 text-xs font-bold text-rose-700 sm:rounded-lg sm:px-3 sm:text-sm">
                         {item.max.toLocaleString("bn-BD")}
                       </span>
                     </td>
 
                     {/* Average Price */}
-                    <td className="whitespace-nowrap px-4 py-4">
-                      <span className="inline-flex rounded-lg bg-indigo-50 px-3 py-1.5 text-sm font-bold text-indigo-700">
+                    <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-4">
+                      <span className="inline-flex rounded-md bg-indigo-50 px-2 py-1.5 text-xs font-bold text-indigo-700 sm:rounded-lg sm:px-3 sm:text-sm">
                         {averagePrice.toLocaleString("bn-BD", {
                           maximumFractionDigits: 2,
                         })}
@@ -91,19 +96,13 @@ export default function MarketsPrice({
                   </tr>
                 );
               })}
-
-              {product?.markets?.length === 0 && (
-                <tr>
-                  <td
-                    colSpan={5}
-                    className="px-4 py-10 text-center text-sm text-gray-500"
-                  >
-                    এই পণ্যের কোনো বাজারের তথ্য পাওয়া যায়নি।
-                  </td>
-                </tr>
-              )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Scroll Hint */}
+        <div className="border-t border-gray-100 bg-gray-50 px-3 py-2 text-center text-[11px] text-gray-500 sm:hidden">
+          ← সম্পূর্ণ দাম দেখতে টেবিলটি ডানে-বামে সরান →
         </div>
       </div>
     </div>

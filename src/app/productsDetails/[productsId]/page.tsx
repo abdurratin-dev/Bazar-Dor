@@ -1,9 +1,14 @@
-'use client'
 import ProductDetails from "@/components/sheard/ProductDetails";
 import ProductDetailsSkeleton from "@/components/skeleton/ProductDetailsSkeleton";
 import { Suspense } from "react";
 
-export default function ProductsDetailsPage({params}:{params: Promise<{productId: string}>}) {
+interface ProductsDetailsPageProps{
+    params: Promise<{
+        productsId: string
+    }>
+}
+
+export default function ProductsDetailsPage({params}:ProductsDetailsPageProps) {
     
     return (
         <Suspense fallback={<ProductDetailsSkeleton />}>

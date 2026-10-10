@@ -35,6 +35,7 @@ export default function ProfilePage() {
   };
 
   return (
+    <Suspense fallback={<ProfileSkeleton />}>
       <main className="min-h-screen bg-[#f3f7f3] px-4 py-8 text-[#202b23] sm:px-6 lg:px-10 lg:py-12">
         <div className="mx-auto max-w-5xl">
           {/* Page Heading */}
@@ -53,9 +54,8 @@ export default function ProfilePage() {
 
             <div className="flex flex-col gap-6 p-5 sm:flex-row sm:items-center sm:p-8">
               <div className="relative mx-auto shrink-0 sm:mx-0">
-                <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl border-4 border-[#edf7ee] bg-[#e4f3e6] text-3xl font-bold text-[#16864a] sm:h-28 sm:w-28">
-                  {profile?.name.trim().charAt(0).toUpperCase()}
-                </div>
+                <img src={profile?.image || "https://cdn-icons-png.flaticon.com/512/14022/14022382.png"} className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl border-4 border-[#edf7ee] bg-[#e4f3e6] text-3xl font-bold text-[#16864a] sm:h-28 sm:w-28">
+                </img>
               </div>
 
               <div className="min-w-0 flex-1 text-center sm:text-left">
@@ -208,5 +208,6 @@ export default function ProfilePage() {
           </section>
         </div>
       </main>
+      </Suspense>
   );
 }
