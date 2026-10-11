@@ -33,8 +33,9 @@ export default function ProductCard({
   );
 
   return (
-    <Link href={`/productsDetails/${product.id}`}>
-    <article
+    <Link
+      href={`/product/${product.id}`}>
+      <article
         className="
         group w-full overflow-hidden
         rounded-2xl border border-gray-200
@@ -110,7 +111,9 @@ export default function ProductCard({
             `}
           >
             {arrowIcon}
-            <span>{Number(priceParcentege.toFixed(1)).toLocaleString("bn-BD")}%</span>
+            <span>
+              {Number(priceParcentege.toFixed(1)).toLocaleString("bn-BD")}%
+            </span>
           </div>
         </div>
 
@@ -121,6 +124,6 @@ export default function ProductCard({
           <span>{product.yesterday.toLocaleString("bn-BD")} টাকা</span>
         </div>
       </article>
-        </Link>
+    </Link>
   );
 }

@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import { getCategoryData, getProductsData } from "@/lib/allDataFetch";
 import { ICategoryDataType, IProductDataType } from "@/types/allDataType";
-import  ProductsCategorys  from "./ProductsCategorys";
+import ProductsCategorys from "./ProductsCategorys";
 import { useEffect, useState } from "react";
 import CategoryProductsSkeleton from "../skeleton/CategoryProductsSkeleton";
 import Notfound from "../not-found/NotFound";
@@ -9,31 +9,42 @@ import Notfound from "../not-found/NotFound";
 export default function CategoryContent({
   categoryId,
 }: {
-  categoryId : string ;
+  categoryId: string;
 }) {
   const [products, setPoducts] = useState<IProductDataType[]>([]);
   const [categories, setCategories] = useState<ICategoryDataType[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const contorldata = async() => {
-    const products: IProductDataType[] = await getProductsData();
-    const categories: ICategoryDataType[] = await getCategoryData();
-    setPoducts(products);
-    setCategories(categories)
-    }
+    const contorldata = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`, {
+          next: { revalidate: 10 },
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch product data");
+        }
+        const data = await res.json();
+        setPoducts(data);
+      } catch {
+        throw new Error("Products data fetch faild");
+      } finally {
+        setLoading(false);
+      }
+      const categories: ICategoryDataType[] = await getCategoryData();
+      setCategories(categories);
+    };
     contorldata();
   }, []);
-  console.log(categoryId)
+  console.log(categoryId);
   const categoryProducts = products.filter(
-      (product) => product.category === categoryId,
-    );
+    (product) => product.category === categoryId,
+  );
   const head = categories.find((product) => product.id === categoryId);
-  if(head?.id !== categoryId){
-    return (
-      <CategoryProductsSkeleton />
-    )
+  if (loading) {
+    return <CategoryProductsSkeleton />;
   }
-  if(categoryProducts.length === 0){
-    return <Notfound />
+  if (categoryProducts.length === 0) {
+    return <Notfound />;
   }
   return (
     <div className="mt-8 mb-8 xl:h-screen">

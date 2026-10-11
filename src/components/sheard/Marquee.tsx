@@ -56,7 +56,7 @@ export default async function Marquee() {
           return (
             <Link
               key={product.id}
-              href={`/productsDetails/${product.id}`}
+              href={`/product/${product.id}`}
               className="
                 group mx-1.5 flex h-9 items-center gap-2
                 whitespace-nowrap rounded-full px-3

@@ -30,7 +30,6 @@ export default function SignUpPage() {
       password: String(formData.get("password")),
       confirmPassword: String(formData.get("confirmPassword")),
     };
-    console.log(resData);
     if (resData.password !== resData.confirmPassword) {
       return toast.error("কনফার্ম পাসওয়ার্ডটি মেলেনি । আবার চেষ্টা করুন");
     }
@@ -39,7 +38,10 @@ export default function SignUpPage() {
       email: resData.email as string,
       password: resData.confirmPassword as string,
     });
-    return toast.success("আপনার অ্যাকাউন্টটি সফলভাবে তৈরি হয়েছে");
+    if(error){
+      toast.error("আপনার তথ্যগুলোর মধ্যে কোন একটি ভুল রয়েছে")
+    }
+    toast.success("আপনার অ্যাকাউন্টটি সফলভাবে তৈরি হয়েছে");
     redirect("/")
   };
   const signInOnGoogle = async () => {
